@@ -15,41 +15,44 @@
 		} else {
 		}
 		$("#font_familySel").on("change", function() {
-			$("#content").css("font-family", $(this).val());
+			$("textarea").css("font-family", $(this).val());
 		})
 		$("#font_size").on("change", function() {
-			$("#content").css("font-size", $(this).val());
+			$("textarea").css("font-size", $(this).val());
 
 		})
 		$("#font_weight").on("change", function() {
-			$("#content").css("font-weight", $(this).val());
+			$("textarea").css("font-weight", $(this).val());
 
 		})
 		$("#font").on("change", function() {
-			$("#content").css("text-align", $(this).val());
+			$("textarea").css("text-align", $(this).val());
 			
 
 		})
-		$("#filefile").change(function() {
+		/* $("#filefile").change(function() {
 			$("#filename").val($("#filefile").val());
 			var s2 = $("#filename").val();
 			var attr = s2.substring(s2.length-3);
 			if(attr=="png"||attr=="jpg"||attr=="jpeg"){
-				//$("#content").append()
+				var textContent = $("#content").text().html();
+				alert(textContent);
+				$("#content").append($("#content").html("<img src="+$("#filename").val()+">"));
+				alert($("#content").html())
 			}
-		})
-		$("#subBtn").click(function() {
+		}) */
+		/* $("#subBtn").click(function() {
 			$("#content2").val($("#content").text());
 			if($("#title").val().trim()!=""&& $("#content").text().trim()!=""){
 			$("#filesub").submit();
-			$("#content").find("img").remove();
+			$("#content").find("img").remove();//하나로 합치고 dto는 리퀘스트객체로 수동으로.
 			alert("글쓰기가 완료되었습니다.");
 			}
 			else{
 				alert("제목과 내용 둘 다 입력해주세요")
 				return false;
 			}
-		})
+		})*/
 	})
 </script>
 </head>
@@ -80,13 +83,13 @@
 			</table>
 		</div>
 		<!-- 파일첨부 input  -->
-		<form action = "fileSave.jsp" id="filesub" method="post" enctype="Multipart/form-data">
+		<!-- <form action = "fileSave.jsp" id="filesub" method="post" enctype="Multipart/form-data">
 			파일첨부 : <input type="file" id="filefile" name="file" multiple="multiple">
-		</form>
+		</form> -->
 		<!-- 글쓰기 -->
 		<div class="notice_write">
 			<h1>게시판 글쓰기</h1>
-			<form method="get" action="insertPostRe.jsp" enctype="Multipart/form-data">
+			<form method="get" action="insertPostRe.jsp">
 				
 				제목: <input type="text" width="300"size="80" id="title" name="title"><br>
 				<select id="font_familySel" name="font_family">
@@ -113,11 +116,12 @@
 					<option value="center">가운데</option>
 					<option value="right">오른쪽</option>
 				<!-- 파일이름들어가는공간 -->					
-				<input type="hidden" value="" id="filename" name = "filename">
+				<!-- <input type="hidden" value="" id="filename" name = "filename"> -->
 				</select> 
-
-				<br>내용 :<div id="content"  contentEditable="true" style="text-align:left; overflow-x:auto; width:500px; height: 300px; border: solid; 1px; margin: 20px; line-height: 20px; "> </div>
-				<!-- 넘길내용 --><input type="hidden"name="content" id="content2">
+				
+				<br><textarea rows="20" cols="50" placeholder="내용을 입력해주세요." name="content" id="content" style="width: 773px;height: 566px;" ></textarea>
+				<!-- <div id="content"  contentEditable="true" style="text-align:left; overflow-x:auto; width:500px; height: 300px; border: solid; 1px; margin: 20px; line-height: 20px; "> </div> -->
+				<!-- 넘길내용 --><!-- <input type="hidden"name="content" id="content2"> -->
 				<br>
 				<%
 					String s1 = request.getParameter("nullDoctor");
