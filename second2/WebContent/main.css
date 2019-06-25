@@ -1,0 +1,89 @@
+@charset "UTF-8";
+/* 메뉴바 */
+.nav_bar{
+	height: 50px;
+	background: skyblue;
+}
+/* 메인로고 */
+.logo{
+	width: 300px;
+	height: 300px;
+	margin-top: 100px;
+	padding-bottom: 10px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+/* 메뉴바 */
+.menu{
+	width: 500px;
+	text-align: center;
+	padding-bottom: 9px;
+	padding-top: 5px;
+}
+
+.mainhref{
+	color: #f2f2f2;
+	font-size: 30px;
+	font-family: 굴림;
+	text-decoration: none;
+	text-align: center;
+}
+
+.mainhref:hover, .menu:hover{
+	background: #8db7fc;
+}
+/* 글쓰기 div */
+.notice_write{
+	width: 1000px;
+}
+
+textarea{
+	width: 773px;
+	hei ght: 566px;
+}
+/* 폰트 적용  */
+#font_family1{
+	font-family: dotum;
+}
+#font_family2{
+	font-family: 고딕;
+}
+#font_family3{
+	font-family: gulim;
+}
+#font_family4{
+	font-family: cursive;
+}
+#font_family5{
+	font-family: arial;
+}
+#font_family6{
+	font-family: serif;
+}
+#font_size1{
+	font-size: 9px;
+}
+#font_size2{
+	font-size: 12px;
+}
+#font_size3{
+	font-size: 18px;
+}
+#font_size4{
+	font-size: 24px;
+}
+#font_weight1{
+	font-weight: bold;
+}
+/* home에있는 메인 */
+.home_main{
+	width: 700px;
+	float: left;
+}
+.login{
+	margin-left:100px;
+	float: left;
+}
