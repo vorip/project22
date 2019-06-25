@@ -119,7 +119,7 @@ $(function() {
 		<hr>
 		<form action = "insertPost.jsp">
 			<input name = "nullDoctor" type="hidden" value = "false">
-			<a href="insertPost.jsp">글쓰기</a> --%>
+			<a href="insertPost.jsp">글쓰기</a>
 		</form>
 
 </body>

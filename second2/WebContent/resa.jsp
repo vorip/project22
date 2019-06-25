@@ -42,18 +42,58 @@ function yeyak() {
 	
 	<!-- 지도(카테고리 검색) -->
 <div class="map_wrap">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+    <div id="map" style="width:500px;height:500px;position:relative;overflow:hidden;"></div>
     <ul id="category">
       <li id="HP8" data-order="2"> 
             <span class="category_bg pharmacy"></span>
-            병원
+            정형외과
         </li>      
-          
+          <li id="HP8" data-order="0"> 
+            <span class="category_bg pharmacy"></span>
+            산부인과
+        </li>       
+        <li id="HP8" data-order="1"> 
+            <span class="category_bg pharmacy"></span>
+            내과
+        </li>  
+        <li id="HP8" data-order="2"> 
+            <span class="category_bg pharmacy"></span>
+            소아과
+        </li>  
+        <li id="HP8" data-order="3"> 
+            <span class="category_bg pharmacy"></span>
+            치과
+        </li>  
+        <li id="HP8" data-order="4"> 
+            <span class="category_bg pharmacy"></span>
+            비뇨기과
+        </li>  
+        <li id="HP8" data-order="5"> 
+            <span class="category_bg pharmacy"></span>
+            종합병원
+        </li>      
     </ul>
 </div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=73c7dffaba233eab31cd664273039896&libraries=services"></script>
 <script>
+//주소-좌표 변환 객체를 생성합니다
+var geocoder = new daum.maps.services.Geocoder();
+
+// 주소로 좌표를 검색합니다
+geocoder.addressSearch('<%= session.getAttribute("url") %>', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === daum.maps.services.Status.OK) {
+
+        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    } 
+});    
+
 // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
 var placeOverlay = new daum.maps.CustomOverlay({zIndex:1}), 
     contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
@@ -62,8 +102,10 @@ var placeOverlay = new daum.maps.CustomOverlay({zIndex:1}),
  
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-        center: new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 5 // 지도의 확대 레벨
+        center: new daum.maps.LatLng(37.545078, 126.7371054), // 지도의 중심좌표
+        draggable: false,//지도의 이동을 막기 위한 옵션값
+        //
+        level: 3// 지도의 확대 레벨
     };  
 
 // 지도를 생성합니다    
